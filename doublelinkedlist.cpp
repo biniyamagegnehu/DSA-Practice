@@ -148,7 +148,18 @@ void searchanddisplay(){
 	}
 }
 void del(){
-	
+	Student *temp = start,*temp2;
+	int id;
+	cout<<"Enter the id you want to delete : ";
+	cin>>id;
+	while(temp->id!=id)
+	{
+		temp2 = temp;
+		temp = temp->next;
+	}
+	temp2->next = temp->next;
+	temp->next->prev = temp2;
+	delete temp;
 }
 void update(){
 	
