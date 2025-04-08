@@ -66,6 +66,8 @@ int main()
 		cout<<"continue press any key\n";
 		}
 	}while(ch=='y');
+	
+	int count=0;
 
 		
 	return 0;
@@ -164,6 +166,43 @@ void del(){
 void update(){
 	
 }
-void sort(){
-	
+void sort() {
+    if (start == NULL || start->next == NULL) {
+        // If the list is empty or has only one element, no sorting is needed
+        cout << "The list is empty or has only one student, no need to sort.\n";
+        return;
+    }
+    
+    bool swapped;
+    Student *current;
+    Student *last = NULL;
+
+    do {
+        swapped = false;
+        current = start;
+
+        while (current->next != last) {
+            // Compare current student's id with the next student's id
+            if (current->id > current->next->id) {
+                // Swap the students if they're in the wrong order
+                int tempId = current->id;
+                char tempName[10];
+                
+                //strcpy(tempName, current->name);
+
+                current->id = current->next->id;
+               // strcpy(current->name, current->next->name);
+
+                current->next->id = tempId;
+               // strcpy(current->next->name, tempName);
+
+                swapped = true;
+            }
+            current = current->next;
+        }
+        last = current;
+    } while (swapped); // Continue until no more swaps are needed
+
+    cout << "The list has been sorted by student ID.\n";
+    display(); // Display the sorted list
 }
