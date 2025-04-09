@@ -67,7 +67,26 @@ int main() {
 }
 
 void insert_big() {
-
+	Student *temp = new Student;
+	cout<<"Please enter student id : ";
+	cin>>temp->id;
+	cout<<"Please enter the name : ";
+	cin>>temp->name;
+	
+	temp->next = temp;
+	if(start==NULL){
+		start = temp;
+	} else
+	{
+		Student *temp2 = start;
+		while(temp2->next!=start)
+		{
+			temp2 = temp2->next;
+		}
+		temp->next = start;
+		start = temp;
+		temp2->next = temp;
+	}
 }
 
 void insert_end() {
@@ -83,7 +102,7 @@ void insert_end() {
 	} else
 	{
 		Student *temp2 = start;
-		while(temp2->!=start)
+		while(temp2->next!=start)
 		{
 			temp2 = temp2->next;
 		}
@@ -101,5 +120,19 @@ void del_end() {
 }
 
 void display() {
-
+    Student *temp = start;
+	if(start==NULL){
+		cout<<"the list is empty\n";
+		getch();
+	}
+	else {
+		cout<<"ID"<<" "<<"NAME"<<endl;
+		while(temp->next!=start)
+		{
+			cout<<temp->id<<" "<<temp->name<<endl;
+			temp = temp->next;
+		}
+		cout<<temp->id<<" "<<temp->name<<endl;
+		getch();
+	}	
 }
