@@ -168,41 +168,34 @@ void update(){
 }
 void sort() {
     if (start == NULL || start->next == NULL) {
-        // If the list is empty or has only one element, no sorting is needed
         cout << "The list is empty or has only one student, no need to sort.\n";
         return;
     }
     
     bool swapped;
-    Student *current;
+    Student *curr;
     Student *last = NULL;
 
     do {
         swapped = false;
-        current = start;
+        curr = start;
 
-        while (current->next != last) {
-            // Compare current student's id with the next student's id
-            if (current->id > current->next->id) {
-                // Swap the students if they're in the wrong order
-                int tempId = current->id;
+        while (curr->next != last) {
+            if (curr->id > curr->next->id) {
+                int tempId = curr->id;
                 char tempName[10];
                 
-                //strcpy(tempName, current->name);
-
-                current->id = current->next->id;
-               // strcpy(current->name, current->next->name);
-
-                current->next->id = tempId;
-               // strcpy(current->next->name, tempName);
-
+                curr->id = curr->next->id;
+				
+                curr->next->id = tempId;
+				swap(curr->name,curr->next->name);
                 swapped = true;
             }
-            current = current->next;
+            curr = curr->next;
         }
-        last = current;
-    } while (swapped); // Continue until no more swaps are needed
+        last = curr;
+    } while (swapped);
 
     cout << "The list has been sorted by student ID.\n";
-    display(); // Display the sorted list
+    display(); 
 }
