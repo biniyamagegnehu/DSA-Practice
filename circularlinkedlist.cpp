@@ -71,7 +71,25 @@ void insert_big() {
 }
 
 void insert_end() {
+	Student *temp = new Student;
+	cout<<"Please enter student id : ";
+	cin>>temp->id;
+	cout<<"Please enter the name : ";
+	cin>>temp->name;
 	
+	temp->next = temp;
+	if(start==NULL){
+		start = temp;
+	} else
+	{
+		Student *temp2 = start;
+		while(temp2->!=start)
+		{
+			temp2 = temp2->next;
+		}
+		temp->next = start;
+		temp2->next = temp;
+	}
 }
 
 void del_big() {
