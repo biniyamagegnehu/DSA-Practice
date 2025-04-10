@@ -116,7 +116,20 @@ void del_big() {
 }
 
 void del_end() {
-
+	Student *temp = start,*temp2;
+	if(start==NULL){
+		cout<<"Empty\n";
+		getch();
+	} else
+	{
+		while(temp->next!=start)
+		{
+			temp2 = temp;
+			temp = temp->next;
+		}
+		temp2->next = temp->next;
+		delete temp;
+	}
 }
 
 void display() {
