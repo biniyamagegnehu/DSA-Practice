@@ -112,7 +112,19 @@ void insert_end() {
 }
 
 void del_big() {
-
+	Student *temp = start,*temp2 = start;
+	if(start==NULL){
+		cout<<"Empty\n";
+	} else
+	{
+		while(temp2->next!=start)
+		{
+			temp2 = temp2->next;
+		}
+		temp2->next = start->next;
+		start = start->next;
+		delete temp;
+	}
 }
 
 void del_end() {
