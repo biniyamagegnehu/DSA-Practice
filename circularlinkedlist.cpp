@@ -18,6 +18,7 @@ using namespace std;
 	void insert_end();
 	void del_big();
 	void del_end();
+	void del_by_id();
 	void display();
 	
 int main() {
@@ -31,8 +32,9 @@ int main() {
 		cout<<"2. insert at the end\n";
 		cout<<"3. delete at the biggining\n";
 		cout<<"4. delete at the end\n";
-		cout<<"5. display all list\n";
-		cout<<"6. exit\n";
+		cout<<"5. delete any data by id\n";
+		cout<<"6. display all list\n";
+		cout<<"7. exit\n";
 		cout<<"Enter your choice : ";
 		cin>>choice;
 		
@@ -51,9 +53,12 @@ int main() {
 			del_end();
 			break;
 		case 5:
-			display();
+			del_by_id();
 			break;
 		case 6:
+			display();
+			break;
+		case 7:
 			ch='n';
 			cout<<"good bye";
 		default:
@@ -141,6 +146,35 @@ void del_end() {
 		}
 		temp2->next = temp->next;
 		delete temp;
+	}
+}
+
+void del_by_id() {
+	Student *temp = start,*temp2,*temp3;
+	int id;
+	cout<<"Enter the id you want to delete: ";
+	cin>>id;
+	if(start==NULL){
+		cout<<"Empty\n";
+	} else if(start->id==id) {
+		temp2 = start;
+		while(temp2->next!=start)
+		{
+			temp2 = temp2->next;
+		}
+		temp2->next = start->next;
+		start = start->next;
+		delete temp;
+	} else
+	{
+		while(temp->id!=id)
+		{
+			temp3 = temp;
+			temp = temp->next;
+		}
+		temp3->next = temp->next;
+		delete temp;
+		
 	}
 }
 
